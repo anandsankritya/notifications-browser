@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_recents"
+            android:title="Recents" />
+        <item
+            android:id="@+id/nav_all_notifications"
+            android:title="All Notifications" />
+        <item
+            android:id="@+id/nav_notifications_by_apps"
+            android:title="Notifications by Apps" />
+        <item
+            android:id="@+id/nav_export_logs"
+            android:title="Export Logs" />
+        <item
+            android:id="@+id/nav_favourites"
+            android:title="Favourites" />
+        <item
+            android:id="@+id/nav_how_to_use"
+            android:title="How to use?" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings" />
+    </group>
+
+</menu>
