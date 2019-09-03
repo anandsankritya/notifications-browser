@@ -82,7 +82,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-		if(item.getItemId() == R.id.menu_delete) {
+        if (item.getItemId() == R.id.menu_delete_details) {
 			confirmDelete();
 		}
 		return super.onOptionsItemSelected(item);
