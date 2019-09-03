@@ -4,7 +4,7 @@
 
     <item
         android:visible="true"
-        android:id="@+id/menu_delete"
+        android:id="@+id/menu_delete_details"
         android:title="@string/menu_delete"
         app:showAsAction="never" />
 

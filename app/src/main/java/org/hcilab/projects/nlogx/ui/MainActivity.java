@@ -1,29 +1,23 @@
 package org.hcilab.projects.nlogx.ui;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Build;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -44,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 	private Button buttonAllow;
 	private FrameLayout frameLayout;
 	private AlertDialog dialog = null;
+	private TextView tvRecentsBadgeCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 				R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
+
+		MenuItem recents = navigationView.getMenu().findItem(R.id.nav_recents);
+		tvRecentsBadgeCount = (TextView) recents.getActionView();
+
+		initCountDrawer();
 
 		frameLayout = findViewById(R.id.fragment_container);
 
@@ -84,12 +84,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 		}
 	}
 
+	private void initCountDrawer() {
+
+		tvRecentsBadgeCount.setGravity(Gravity.CENTER_VERTICAL);
+		tvRecentsBadgeCount.setTypeface(null, Typeface.BOLD);
+		tvRecentsBadgeCount.setTextColor(getResources().getColor(R.color.colorAccent));
+		tvRecentsBadgeCount.setText("99+");
+
+
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (!Util.isNotificationAccessEnabled(getApplicationContext())) {
+			tvRecentsBadgeCount.setText("0");
+			openDialog();
+		} else {
+			BrowseAdapter adapter = new BrowseAdapter(this);
+			String count = String.valueOf(adapter.getItemCount());
+			tvRecentsBadgeCount.setText(count);
+		}
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		if (!Util.isNotificationAccessEnabled(getApplicationContext())) {
+			tvRecentsBadgeCount.setText("0");
 			openDialog();
 		}else {
+			BrowseAdapter adapter = new BrowseAdapter(this);
+			String count = String.valueOf(adapter.getItemCount());
+			tvRecentsBadgeCount.setText(count);
+
 			buttonAllow.setVisibility(View.GONE);
 			frameLayout.setVisibility(View.VISIBLE);
 			Bundle bundle = new Bundle();
@@ -129,6 +157,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		if (menu != null) {
+			menu.clear();
+		}
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
