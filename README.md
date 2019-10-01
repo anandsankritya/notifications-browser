@@ -19,6 +19,9 @@ Notification Log was used in multiple studies:
 * Thomas Kubitza, Alexandra Voit, Dominik Weber, and Albrecht Schmidt. 2016. **An IoT Infrastructure for Ubiquitous Notifications in Intelligent Living Environments**. In Proceedings of the 2016 ACM International Joint Conference on Pervasive and Ubiquitous Computing: Adjunct (UbiComp '16). ACM, New York, NY, USA, 1536-1541. DOI: https://doi.org/10.1145/2968219.2968545 
 * Dominik Weber, Sven Mayer, Alexandra Voit, Rodrigo Ventura Fierro, and Niels Henze. 2016. **Design Guidelines for Notifications on Smart TVs**. In Proceedings of the ACM International Conference on Interactive Experiences for TV and Online Video (TVX '16). ACM, New York, NY, USA, 13-24. DOI: https://doi.org/10.1145/2932206.2932212
 
+## Used for
+Any one can get an idea of how to build an app to track all notifications and store it for later use.
+
 ## Citation
 
 * Dominik Weber, Alexandra Voit, and Niels Henze. 2018. **Notification Log: An Open-Source Framework for Notification Research on Mobile Devices**. In Proceedings of the 2018 ACM International Joint Conference and 2018 International Symposium on Pervasive and Ubiquitous Computing and Wearable Computers (UbiComp '18). ACM, New York, NY, USA, 1271-1278. DOI: https://doi.org/10.1145/3267305.3274118 
