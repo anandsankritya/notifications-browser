@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 			case R.id.nav_how_to_use:
 			case R.id.nav_favourites:
 				if (Util.isNotificationAccessEnabled(getApplicationContext())){
-					Toast.makeText(MainActivity.this, "Work in progress!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(MainActivity.this, "Under construction!", Toast.LENGTH_SHORT).show();
 				}else {
 					openDialog();
 				}
